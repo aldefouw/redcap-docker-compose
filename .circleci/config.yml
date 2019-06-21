@@ -3,6 +3,7 @@ jobs:
   test:
     machine: true
     steps:
+      - checkout
       - run:
           name: Build the REDCap image
           command: |
