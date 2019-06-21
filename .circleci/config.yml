@@ -2,7 +2,6 @@ version: 2
 jobs:
   test:
     machine: true
-    working_directory: /redcap-docker-compose/rdc/
     steps:
       - run:
           name: Install Docker Compose
@@ -13,6 +12,7 @@ jobs:
       - run:
           name: Build the REDCap image
           command: |
+              cd rdc
               set -x
               docker-compose up -d
 
