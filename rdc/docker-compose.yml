@@ -44,22 +44,10 @@ services:
       - ${LOGS_DIR}:/logs-dir
 
   mailhog:
-    build: docker-mailhog
-    restart: always
-    env_file: .env
-    depends_on:
-      - web
-    ports:
-      - "1025:1025"
-      - "8025:8025"
-    volumes:
-      - ${MAILHOG_DIR}:/maildir
-      - ${MAILHOG_OUTGOING_SMTP_FILE}:/outgoing_smtp.json
-    environment:
-      MH_STORAGE: maildir
-      MH_MAILDIR_PATH: /maildir
-      MH_OUTGOING_SMTP: /outgoing_smtp.json
-      MH_UI_WEB_PATH: mailhog
+      image: mailhog/mailhog:v1.0.0
+      ports:
+        - "1025:1025"
+        - "8025:8025"
 
   # THIS CONTAINER IS OPTIONAL IF YOU WANT TO HAVE PHPMYADMIN - OTHERWISE COMMENT IT OUT
 #  phpmyadmin:
