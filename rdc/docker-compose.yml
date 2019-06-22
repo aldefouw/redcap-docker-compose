@@ -44,10 +44,12 @@ services:
       - ${LOGS_DIR}:/logs-dir
 
   mailhog:
-      image: mailhog/mailhog:v1.0.0
-      ports:
-        - "1025:1025"
-        - "8025:8025"
+    depends_on:
+      - web
+    image: mailhog/mailhog:v1.0.0
+    ports:
+      - "1025:1025"
+      - "8025:8025"
 
   # THIS CONTAINER IS OPTIONAL IF YOU WANT TO HAVE PHPMYADMIN - OTHERWISE COMMENT IT OUT
 #  phpmyadmin:
